@@ -5,7 +5,6 @@
 
 MenuScene::MenuScene()
 {
-    this->_gameSceneID = SampleGameScenes::Menu;
     menuIDX = 0;
 }
 
@@ -44,11 +43,6 @@ void MenuScene::render(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 ////////////////////////////////////////////
 // GameSceneA
 
-GameSceneA::GameSceneA()
-{
-    this->_gameSceneID = SampleGameScenes::GameA;
-}
-
 void GameSceneA::update(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 {
     if(engine.arduboy.justPressed(A_BUTTON)) engine.changeToScene(SampleGameScenes::Menu);
@@ -67,11 +61,6 @@ void GameSceneA::render(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 
 ////////////////////////////////////////////
 // GameSceneB
-
-GameSceneB::GameSceneB()
-{
-    this->_gameSceneID = SampleGameScenes::GameB;
-}
 
 void GameSceneB::update(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 {

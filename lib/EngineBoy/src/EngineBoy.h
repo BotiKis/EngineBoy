@@ -10,7 +10,28 @@ class EngineBoy;
 template<typename GameContextType, typename GameSceneType>
 class GameScene;
 
-class DeltaTimer;
+//////////////////////////////
+// DeltaTimer
+
+class DeltaTimer
+{
+private:
+	uint32_t _lastUpdateTime = 0;
+	uint32_t _deltaTime = 0;
+
+public:
+	uint32_t getDeltaTime(void) const
+	{
+		return this->_deltaTime;
+	}
+
+	void update(void)
+	{
+		uint32_t currentTime = millis();
+		this->_deltaTime = (currentTime - this->_lastUpdateTime);
+		this->_lastUpdateTime = currentTime;
+	}
+};
 
 //////////////////////////////
 // EngineBoy Engine
@@ -48,7 +69,6 @@ public:
 
         // init internal stuff
         _currentScene = nullptr;
-        _lastUpdateTimestamp = millis();
     }
 
 	virtual void update(void){
@@ -128,18 +148,6 @@ public:
 	using GameSceneID = GameSceneType;
 	using GameContext = GameContextType;
 
-protected:
-
-	// In the implementation set this to the correct ID
-	GameSceneID _gameSceneID;
-
-private:
-
-	GameSceneID getGameSceneID(void) const
-	{
-		return _gameSceneID;
-	}
-
 public:
 
   // Methods need to be implemented by subclass
@@ -159,25 +167,5 @@ public:
 	{
 		// Get rid of 'unused parameter' warnings
 		(void)engine;
-	}
-};
-
-class DeltaTimer
-{
-private:
-	uint32_t _lastUpdateTime = 0;
-	uint32_t _deltaTime = 0;
-
-public:
-	uint32_t getDeltaTime(void) const
-	{
-		return this->_deltaTime;
-	}
-
-	void update(void)
-	{
-		uint32_t currentTime = millis();
-		this->_deltaTime = (currentTime - this->_lastUpdateTime);
-		this->_lastUpdateTime = currentTime;
 	}
 };

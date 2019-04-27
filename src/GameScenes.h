@@ -31,7 +31,6 @@ class GameSceneA : public GameScene<SampleGameContext, SampleGameScenes>
 {
 
 public:
-    GameSceneA();
     void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
     void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
 };
@@ -44,7 +43,6 @@ class GameSceneB : public GameScene<SampleGameContext, SampleGameScenes>
 {
 
 public:
-    GameSceneB();
     void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
     void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
 };
