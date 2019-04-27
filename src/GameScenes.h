@@ -4,9 +4,9 @@
 #include "SampleGameContext.h"
 
 enum class SampleGameScenes{
-  Menu,
-  GameA,
-  GameB
+	Menu,
+	GameA,
+	GameB
 };
 
 //////////////////////
@@ -15,12 +15,12 @@ enum class SampleGameScenes{
 class MenuScene : public GameScene<SampleGameContext, SampleGameScenes>
 {
 private:
-    uint8_t menuIDX;
+		uint8_t menuIDX;
 
 public:
-    MenuScene();
-    void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
-    void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		MenuScene();
+		void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
 };
 
 
@@ -31,8 +31,8 @@ class GameSceneA : public GameScene<SampleGameContext, SampleGameScenes>
 {
 
 public:
-    void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
-    void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
 };
 
 
@@ -43,6 +43,6 @@ class GameSceneB : public GameScene<SampleGameContext, SampleGameScenes>
 {
 
 public:
-    void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
-    void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		void update(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
+		void render(EngineBoy<SampleGameContext, SampleGameScenes> & engine) override;
 };

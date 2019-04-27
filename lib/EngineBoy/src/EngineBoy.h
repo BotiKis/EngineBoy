@@ -47,11 +47,11 @@ public:
 	Arduboy2 arduboy;
 
 protected:
-  // Used to calculate deltatime
-  DeltaTimer _deltaTimer;
+	// Used to calculate deltatime
+	DeltaTimer _deltaTimer;
 
 protected:
-  GameScene<GameContext, GameSceneID> *_currentScene;
+	GameScene<GameContext, GameSceneID> *_currentScene;
 
 public:
 	// getter for deltatime
@@ -61,15 +61,15 @@ public:
 	virtual const GameContext & getContext(void) const = 0;
 
 	virtual void setup(void)
-    {
-        // Init arduboy related stuff
-        arduboy.begin();
-        arduboy.initRandomSeed();
-        arduboy.setFrameRate(60);
+		{
+				// Init arduboy related stuff
+				arduboy.begin();
+				arduboy.initRandomSeed();
+				arduboy.setFrameRate(60);
 
-        // init internal stuff
-        _currentScene = nullptr;
-    }
+				// init internal stuff
+				_currentScene = nullptr;
+		}
 
 	virtual void update(void){
 		// calculate delta time
@@ -87,29 +87,29 @@ public:
 	}
 
 	virtual void display(void)
-  {
-      // Render current scene
-      arduboy.clear();
-      if(_currentScene)
-          _currentScene->render(*this);
+	{
+			// Render current scene
+			arduboy.clear();
+			if(_currentScene)
+					_currentScene->render(*this);
 
 			// call internal render
 			_render();
 
 			arduboy.display();
-  }
+	}
 
 	void changeToScene(GameSceneID sceneID)
 	{
-	  // call callback of old scene
-	  if(_currentScene != nullptr)
-	      _currentScene->willDisappear(*this);
-	  this->didDismissScene(_currentScene);
+		// call callback of old scene
+		if(_currentScene != nullptr)
+				_currentScene->willDisappear(*this);
+		this->didDismissScene(_currentScene);
 
 		// get new scene
-	  _currentScene = this->gameSceneForSceneID(sceneID);
+		_currentScene = this->gameSceneForSceneID(sceneID);
 
-	  // call callback of new scene
+		// call callback of new scene
 		this->willShowScene(_currentScene);
 		if(_currentScene != nullptr)
 				_currentScene->didAppear(*this);
@@ -117,7 +117,7 @@ public:
 
 protected:
 
-  virtual GameScene<GameContext, GameSceneID>* gameSceneForSceneID(GameSceneID sceneID) = 0;
+	virtual GameScene<GameContext, GameSceneID>* gameSceneForSceneID(GameSceneID sceneID) = 0;
 
 	virtual void willShowScene(GameScene<GameContext, GameSceneID> *nextScene)
 	{
@@ -125,7 +125,7 @@ protected:
 		(void)nextScene;
 	}
 
-  virtual void didDismissScene(GameScene<GameContext, GameSceneID> *previousScene)
+	virtual void didDismissScene(GameScene<GameContext, GameSceneID> *previousScene)
 	{
 		// Get rid of 'unused parameter' warnings
 		(void)previousScene;
@@ -150,11 +150,11 @@ public:
 
 public:
 
-  // Methods need to be implemented by subclass
+	// Methods need to be implemented by subclass
 	virtual void update(EngineBoy<GameContext, GameSceneID> & engine) = 0;
 	virtual void render(EngineBoy<GameContext, GameSceneID> & engine) = 0;
 
-  // Other methods
+	// Other methods
 	virtual ~GameScene(void) {};
 
 	virtual void didAppear(EngineBoy<GameContext, GameSceneID> & engine)

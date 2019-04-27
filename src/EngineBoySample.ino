@@ -3,14 +3,14 @@
 SampleEngine engine;
 
 void setup() {
-  engine.setup();
+	engine.setup();
 }
 
 void loop() {
 
-  if(!engine.arduboy.nextFrame())
-    return;
+	if(!engine.arduboy.nextFrame())
+		return;
 
-  engine.update();
-  engine.display();
+	engine.update();
+	engine.display();
 }
