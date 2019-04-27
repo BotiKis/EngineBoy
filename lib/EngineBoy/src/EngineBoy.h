@@ -10,6 +10,8 @@ class EngineBoy;
 template<typename GameContextType, typename GameSceneType>
 class GameScene;
 
+class DeltaTimer;
+
 //////////////////////////////
 // EngineBoy Engine
 
@@ -23,17 +25,16 @@ public:
 public:
 	Arduboy2 arduboy;
 
-private:
+protected:
   // Used to calculate deltatime
-  uint32_t _lastUpdateTimestamp = 0;
-	uint32_t _deltaTime = 0;
+  DeltaTimer _deltaTimer;
 
 protected:
   GameScene<GameContext, GameSceneID> *_currentScene;
 
 public:
 	// getter for deltatime
-	uint32_t deltaTime() {return _deltaTime;} const
+	uint32_t deltaTime(void) const {return this->_deltaTimer.getDeltaTime();}
 
 	virtual GameContext & getContext(void) = 0;
 	virtual const GameContext & getContext(void) const = 0;
@@ -52,9 +53,7 @@ public:
 
 	virtual void update(void){
 		// calculate delta time
-		uint32_t currentTime = millis();
-		_deltaTime = currentTime - _lastUpdateTimestamp;
-		_lastUpdateTimestamp = currentTime;
+		this->_deltaTimer.update();
 
 		// Update arduboy
 		arduboy.pollButtons();
@@ -160,5 +159,25 @@ public:
 	{
 		// Get rid of 'unused parameter' warnings
 		(void)engine;
+	}
+};
+
+class DeltaTimer
+{
+private:
+	uint32_t _lastUpdateTime = 0;
+	uint32_t _deltaTime = 0;
+
+public:
+	uint32_t getDeltaTime(void) const
+	{
+		return this->_deltaTime;
+	}
+
+	void update(void)
+	{
+		uint32_t currentTime = millis();
+		this->_deltaTime = (currentTime - this->_lastUpdateTime);
+		this->_lastUpdateTime = currentTime;
 	}
 };
