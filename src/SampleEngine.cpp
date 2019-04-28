@@ -32,14 +32,15 @@ GameScene<SampleGameContext, SampleGameScenes> * SampleEngine::gameSceneForScene
 {
 		switch(sceneID)
 		{
-				case SampleGameScenes::Menu: return new MenuScene;
-				case SampleGameScenes::GameA: return new GameSceneA;
-				case SampleGameScenes::GameB: return new GameSceneB;
+				case SampleGameScenes::Menu: return new MenuScene();
+				case SampleGameScenes::GameA: return new GameSceneA();
+				case SampleGameScenes::GameB: return new GameSceneB();
 				default: return nullptr;
 		}
 }
 
-void SampleEngine::_render(void){
+void SampleEngine::_render(void)
+{
 	arduboy.setCursor(41,0);
 	arduboy.print(F("EngineBoy"));
 
