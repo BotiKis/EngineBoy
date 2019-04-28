@@ -4,8 +4,11 @@
 
 #include <Arduboy2.h>
 
-template<typename GameContextType, typename GameSceneType>
+template<typename GameContextType, typename GameSceneType, typename ArduboyType = Arduboy2>
 class EngineBoy;
+
+template<typename GameContextType, typename GameSceneType>
+using EngineBoy2Base = EngineBoy<GameContextType, GameSceneType, Arduboy2Base>;
 
 template<typename GameContextType, typename GameSceneType>
 class GameScene;
@@ -36,15 +39,16 @@ public:
 //////////////////////////////
 // EngineBoy Engine
 
-template<typename GameContextType, typename GameSceneType>
+template<typename GameContextType, typename GameSceneType, typename ArduboyType>
 class EngineBoy
 {
 public:
 	using GameContext = GameContextType;
 	using GameSceneID = GameSceneType;
+	using Arduboy = ArduboyType;
 
 public:
-	Arduboy2 arduboy;
+	Arduboy arduboy;
 
 protected:
 	// Used to calculate deltatime
