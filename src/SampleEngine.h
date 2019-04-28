@@ -29,4 +29,13 @@ private:
 	GameScene<SampleGameContext, SampleGameScenes> * gameSceneForSceneID(SampleGameScenes sceneID);
 
 	void _render(void) final;
+
+	union GameScenes
+	{
+		MenuScene menuScene;
+		GameSceneA gameSceneA;
+		GameSceneB gameSceneB;
+	};
+
+	char _gameScenes[sizeof(GameScenes)];
 };

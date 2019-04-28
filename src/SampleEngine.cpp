@@ -1,4 +1,7 @@
 #include "SampleEngine.h"
+#include "PlacementNew.h"
+
+#include <new.h>
 
 void SampleEngine::setup(void)
 {
@@ -25,22 +28,24 @@ void SampleEngine::didDismissScene(GameScene<SampleGameContext, SampleGameScenes
 {
 	// Clean up
 	if(previousScene != nullptr)
-			 delete previousScene;
+	{
+		previousScene->~GameScene();
+	}
 }
 
 GameScene<SampleGameContext, SampleGameScenes> * SampleEngine::gameSceneForSceneID(SampleGameScenes sceneID)
 {
 		switch(sceneID)
 		{
-				case SampleGameScenes::Menu: return new MenuScene;
-				case SampleGameScenes::GameA: return new GameSceneA;
-				case SampleGameScenes::GameB: return new GameSceneB;
+				case SampleGameScenes::Menu: return new (&this->_gameScenes[0]) MenuScene();
+				case SampleGameScenes::GameA: return new (&this->_gameScenes[0]) GameSceneA();
+				case SampleGameScenes::GameB: return new (&this->_gameScenes[0]) GameSceneB();
 				default: return nullptr;
 		}
 }
 
-void SampleEngine::_render(void)
-{
+void SampleEngine::_render(void){
+
 	auto & tinyfont = this->getContext().tinyfont();
 
 	tinyfont.setCursor(41,0);
