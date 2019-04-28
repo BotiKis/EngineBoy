@@ -32,9 +32,9 @@ GameScene<SampleGameContext, SampleGameScenes> * SampleEngine::gameSceneForScene
 {
 		switch(sceneID)
 		{
-				case SampleGameScenes::Menu: return new MenuScene;
-				case SampleGameScenes::GameA: return new GameSceneA;
-				case SampleGameScenes::GameB: return new GameSceneB;
+				case SampleGameScenes::Menu: return new MenuScene();
+				case SampleGameScenes::GameA: return new GameSceneA();
+				case SampleGameScenes::GameB: return new GameSceneB();
 				default: return nullptr;
 		}
 }
