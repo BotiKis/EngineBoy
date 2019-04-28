@@ -39,9 +39,12 @@ GameScene<SampleGameContext, SampleGameScenes> * SampleEngine::gameSceneForScene
 		}
 }
 
-void SampleEngine::_render(void){
-	arduboy.setCursor(41,0);
-	arduboy.print(F("EngineBoy"));
+void SampleEngine::_render(void)
+{
+	auto & tinyfont = this->getContext().tinyfont();
+
+	tinyfont.setCursor(41,0);
+	tinyfont.print(F("EngineBoy"));
 
 	arduboy.fillRect(0, this->getContext().yValue()-2, 128, 1);
 }

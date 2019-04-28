@@ -4,7 +4,7 @@
 
 #include <Arduboy2.h>
 
-template<typename GameContextType, typename GameSceneType, typename ArduboyType = Arduboy2>
+template<typename GameContextType, typename GameSceneType, typename ArduboyType = Arduboy2Base>
 class EngineBoy;
 
 template<typename GameContextType, typename GameSceneType>
@@ -12,6 +12,7 @@ using EngineBoy2Base = EngineBoy<GameContextType, GameSceneType, Arduboy2Base>;
 
 template<typename GameContextType, typename GameSceneType>
 class GameScene;
+
 
 //////////////////////////////
 // DeltaTimer

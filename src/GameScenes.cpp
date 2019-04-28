@@ -25,18 +25,19 @@ void MenuScene::update(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 void MenuScene::render(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 {
 		uint8_t yPos = engine.getContext().yValue();
+		auto & tinyfont = engine.getContext().tinyfont();
 
-		engine.arduboy.setCursor(0, yPos);
-		engine.arduboy.print(F("MENU"));
+		tinyfont.setCursor(0, yPos);
+		tinyfont.print(F("MENU"));
 
-		engine.arduboy.setCursor(8, yPos + 10);
-		engine.arduboy.print(F("Start Game A"));
+		tinyfont.setCursor(8, yPos + 10);
+		tinyfont.print(F("Start Game A"));
 
-		engine.arduboy.setCursor(8, yPos + 18);
-		engine.arduboy.print(F("Start Game B"));
+		tinyfont.setCursor(8, yPos + 18);
+		tinyfont.print(F("Start Game B"));
 
-		engine.arduboy.setCursor(1, yPos + 10+menuIDX*8);
-		engine.arduboy.print(F(">"));
+		tinyfont.setCursor(1, yPos + 10+menuIDX*8);
+		tinyfont.print(F(">"));
 }
 
 
@@ -51,12 +52,13 @@ void GameSceneA::update(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 void GameSceneA::render(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 {
 		uint8_t yPos = engine.getContext().yValue();
+		auto & tinyfont = engine.getContext().tinyfont();
 
-		engine.arduboy.setCursor(0, yPos);
-		engine.arduboy.print(F("GAME A"));
+		tinyfont.setCursor(0, yPos);
+		tinyfont.print(F("GAME A"));
 
-		engine.arduboy.setCursor(0, yPos + 10);
-		engine.arduboy.print(F("Press A to return\nto the Menu"));
+		tinyfont.setCursor(0, yPos + 10);
+		tinyfont.print(F("Press A to return\nto the Menu"));
 }
 
 ////////////////////////////////////////////
@@ -70,10 +72,11 @@ void GameSceneB::update(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 void GameSceneB::render(EngineBoy<SampleGameContext, SampleGameScenes> & engine)
 {
 		uint8_t yPos = engine.getContext().yValue();
+		auto & tinyfont = engine.getContext().tinyfont();
 
-		engine.arduboy.setCursor(0, yPos);
-		engine.arduboy.print(F("GAME B"));
+		tinyfont.setCursor(0, yPos);
+		tinyfont.print(F("GAME B"));
 
-		engine.arduboy.setCursor(0, yPos + 10);
-		engine.arduboy.print(F("Press A to return\nto the Menu"));
+		tinyfont.setCursor(0, yPos + 10);
+		tinyfont.print(F("Press A to return\nto the Menu"));
 }
