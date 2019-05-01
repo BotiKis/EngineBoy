@@ -1,8 +1,6 @@
 #include "SampleEngine.h"
 #include "PlacementNew.h"
 
-#include <new.h>
-
 void SampleEngine::setup(void)
 {
 		// call super
